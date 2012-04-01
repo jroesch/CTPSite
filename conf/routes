@@ -1,0 +1,29 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index
+
+GET     /posts/page/:page           controllers.Posts.list(page)
+
+#CRUD routes for Posts
+GET     /posts/:id                  controllers.Posts.read(id)
+
+POST    /posts                      controllers.Posts.create()
+
+PUT     /posts/:id                  controllers.Posts.update(id)
+
+DELETE  /posts/:id                  controllers.Posts.delete(id)
+
+#CRUD routes for Comments
+GET     /comments/:id               controllers.Comments.read(id)
+
+POST    /comments/:postId           controllers.Comments.create(postId)
+
+PUT     /comment/:id                controllers.Comments.update(id)
+
+DELETE  /comment/:id                controllers.Comments.delete(id)
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

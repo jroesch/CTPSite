@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <link href="/assets/stylesheets/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">
+    <!-- <script src="/assets/javascripts/jquery-1.7.1.min.js"></script> -->
+  </head>
+  <body>
+    <div id="admin">
+        <form accept-charset"UTF-8" action="/blog/posts" class="new_post" id="new_post" method="post"> 
+            <div class="contain">
+                <input id="post_title" name="title" type="text" size="30" placeholder="Title">
+                <fieldset class="markdown">
+                    <textarea placeholder="Text" id="post_content" name="content" cols="40" rows="20"></textarea>
+                </fieldset>
+            </div>
+            <div id="publish-bar">
+               <div class="contain">
+                    <div class="left">
+                    </div>
+                    <div class="right">
+                        <input name="commit" type="submit" value="Save">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+  </body>
+</html>
