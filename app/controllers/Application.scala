@@ -46,7 +46,7 @@ object Application extends Controller {
         val (username, pw) = loginForm.bindFromRequest.get
         val query = MongoDBObject("username" -> username)
         val user = UserDAO.findOne(query).get
-        if (user.password == pw) 
+        if (user.password == User.hashPassword(pw, user.salt)) 
           Redirect("/").withSession {
             "userid" -> user._id.toString
           }
