@@ -5,12 +5,14 @@
 # Home page
 GET     /                           controllers.Application.index
 
+GET     /posts/new                  controllers.Application.newPost
+
 GET     /posts/page/:page           controllers.Posts.list(page)
 
 #CRUD routes for Posts
 GET     /posts/:id                  controllers.Posts.read(id)
 
-POST    /posts                      controllers.Posts.create()
+POST    /posts                      controllers.Posts.create
 
 PUT     /posts/:id                  controllers.Posts.update(id)
 

@@ -10,4 +10,7 @@ object Application extends Controller {
     //Posts.list("0", 10)
   }
   
+  def newPost = Action {
+    Ok(views.html.createPost())
+  }
 }

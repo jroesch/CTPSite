@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    @views.html.head()
+    <style>
+        #post_title {
+            width: 100%;
+        }
+        
+        #post_content {
+            width: 100%;
+        }
+        
+        #space {
+            width: 100%;
+        }
+        
+        .header {
+            margin: 20px;
+        }
+        
+        #options {
+            width: 100%;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <div class="header">
+                <legend>New Post</legend>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div style="min-height: 10px;" class="span1"></div>
+                    <div class="span10">
+                        <form accept-charset"UTF-8" action="/posts" id="new_post" method="post"> 
+                            <input id="post_title" name="title" type="text" placeholder="Title">
+                            <textarea placeholder="Text" id="post_content" name="content" cols="40" rows="20"></textarea>
+                        </form>
+                    </div>
+                    <div class="span1"></div>
+                </div>
+                <div id="options" class="form-actions">
+                    <input name="cancel" type="submit" value="Cancel" class="btn">
+                    <input name="commit" type="submit" value="Save" class="btn btn-primary">
+                </div>
+            </div>
+        </div>
+  </body>
+</html>
