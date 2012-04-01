@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+@views.html.head()
+    <body>
+        <div class="container">
+            <div id="error">
+            </div>
+            <div class="header">
+                <h1>Register</h1>
+                <hr/>
+            </div>
+            <form class="form-horizontal" action="/register" method="post">
+                <div class="control-group">
+                    <label class="control-label" for="username">Username</label>
+                    <div class="controls">
+                        <input type="text" id="username" name="username">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="password">Password</label>
+                    <div class="controls">
+                        <input type="password" id="password" name="password">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="confirm-password">Confirm Password</label>
+                    <div class="controls">
+                        <input type="password" id="confirm-password" name="confirm-password">
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button id="btn-login" type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+    <body>
+</html>

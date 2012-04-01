@@ -20,7 +20,13 @@ object Posts extends Controller {
   )
   
   /* Pagination for Posts */
-  def list(page: String, postNumber: Int = 10) = TODO
+  def list(page: String, postNumber: Int = 10) = Action {
+    Ok("Some pages")
+  }
+  
+  def newest = Action {
+    Ok("sends you to the front page")
+  }
   
   /* CRUD Actions for Posts */
   def create = Action { implicit request =>
@@ -28,15 +34,15 @@ object Posts extends Controller {
     val md = transformer(content)
     val post: Post = Post(title = title, content = md, author = "placeholder")
     val _id = PostDAO.insert(post)
-    Redirect("/blog/posts/"+(_id.get.toString))
+    Redirect("/posts/"+(_id.get.toString))
   }
   
   def read(id: String) = Action { 
     val query = MongoDBObject("_id" -> new ObjectId(id))
     val post = PostDAO.findOne(query)
     post match {
-      case Some(Post(i, a, t, c)) => Ok("hello")
-      case None => Ok("Not Found")
+      case Some(p) => Ok(views.html.displayPost(p))
+      case None    => Ok("Not Found")
     }
   }
   

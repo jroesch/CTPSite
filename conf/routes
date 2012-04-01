@@ -5,9 +5,23 @@
 # Home page
 GET     /                           controllers.Application.index
 
+#Authentication Routes
+GET     /register                   controllers.Application.register
+
+POST    /register                   controllers.Application.register
+
+GET     /login                      controllers.Application.login
+
+POST    /login                      controllers.Application.login
+
+GET     /logout                     controllers.Application.logout
+
+#Post Management Routes
 GET     /posts/new                  controllers.Application.newPost
 
 GET     /posts/page/:page           controllers.Posts.list(page)
+
+GET     /posts                      controllers.Posts.newest
 
 #CRUD routes for Posts
 GET     /posts/:id                  controllers.Posts.read(id)
@@ -26,6 +40,15 @@ POST    /comments/:postId           controllers.Comments.create(postId)
 PUT     /comment/:id                controllers.Comments.update(id)
 
 DELETE  /comment/:id                controllers.Comments.delete(id)
+
+#CRUD routes for Users
+GET     /users/:id                  controllers.Users.read(id)
+
+POST    /users                      controllers.Users.create
+
+PUT     /users/:id                  controllers.Users.update(id)
+
+DELETE  /users/:id                  controllers.Users.delete(id)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
