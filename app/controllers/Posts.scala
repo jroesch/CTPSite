@@ -21,11 +21,17 @@ object Posts extends Controller {
   
   /* Pagination for Posts */
   def list(page: String, postNumber: Int = 10) = Action {
-    Ok("Some pages")
+    val query = MongoDBObject()
+    val results = PostDAO.find(query).toList
+    val start = page.toInt * postNumber
+    val end = start + postNumber
+    val posts = results.slice(start, end)
+    val numberOfPages = page.toInt / postNumber
+    Ok(views.html.postsPage(posts, 0 to numberOfPages))
   }
   
   def newest = Action {
-    Ok("sends you to the front page")
+    list("0")
   }
   
   /* CRUD Actions for Posts */

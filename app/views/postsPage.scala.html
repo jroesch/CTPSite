@@ -1,0 +1,26 @@
+@(posts: List[Post], pageRange: Range)
+<!DOCTYPE html>
+<html>
+@views.html.head()
+    <!-- TODO add js for pagination -->
+    <body>
+        <div class="container">
+            <h1>Posts</h1>
+            <hr/>
+            <div class="posts">
+                @posts.map { post =>
+                    @views.html.post(post)
+                }
+            </div>
+            <div class="pagination">
+                <ul>
+                    <li><a href="#">Prev</a></li>
+                    @pageRange.map { x =>
+                        <li><a href="@x">@x</a></li>
+                    }
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+.posts {
+    margin: 20px;
+}
+
+.post {
+   padding: 20px; 
+}
+
+.post-header {
+
+}
+
+.post-title {
+    /* float: left;*/
+}
+
+.post-author {
+    margin-left: 20px;
+}
+
+.post-content {
+    
+}
+
+#post-form-title {
+    width: 100%;
+}
+
+#post-form-content {
+    width: 100%;
+}
+
+#space {
+    width: 100%;
+}
+
+.header {
+    margin: 20px;
+}
+
+#post-form-options {
+    width: 100%;
+}

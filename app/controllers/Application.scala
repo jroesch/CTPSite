@@ -8,18 +8,16 @@ import play.api.data.Forms._
 import com.mongodb.casbah.Imports._
 
 object Application extends Controller {
+  private val guest = User(username = "Guest", password = "", salt = "")
   
   def index = Action { request =>
     val uid = request.session.get("userid")
     uid match {
+      case None => Ok(views.html.index(guest))
       case Some(id) => {
         val query = MongoDBObject("_id" -> new ObjectId(id))
         val user = UserDAO.findOne(query)
         Ok(views.html.index(user.get))
-      }
-      
-      case None => {
-        Ok(views.html.index(User(username = "Guest", password = "", salt = "")))
       }
     }
   }
