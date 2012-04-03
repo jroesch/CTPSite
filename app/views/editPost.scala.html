@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    @views.html.head()
+    <body>
+        <div class="container">
+            <div class="header">
+                <legend>New Post</legend>
+            </div>
+            <form accept-charset"UTF-8" action="/posts" id="new_post" method="post">
+            <div class="row">
+                <div class="row">
+                    <div style="min-height: 10px;" class="span1"></div>
+                    <div class="span10">
+                        <input id="post-form-title" name="title" type="text" placeholder="Title">
+                        <textarea placeholder="Text" id="post-form-content" name="content" cols="40" rows="20"></textarea>
+                    </div>
+                    <div class="span1"></div>
+                </div>
+                <div id="post-form-options" class="form-actions">
+                    <a href="#" class="btn">Cancel</a>
+                    <input name="commit" type="submit" value="Save" class="btn btn-primary">
+                </div>
+            </div>
+            </form>
+        </div>
+  </body>
+</html>

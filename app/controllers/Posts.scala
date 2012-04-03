@@ -52,7 +52,13 @@ object Posts extends Controller {
     }
   }
   
-  def update(id: String) = TODO
+  def update(id: String) = Action { implicit request =>
+    val (title, content) = postForm.bindFromRequest.get
+    val md = transformer(content)
+    val post: Post = Post(title = title, content = md, author = "placeholder")
+    val _id = PostDAO.insert(post)
+    Redirect("/posts/"+(_id.get.toString))
+  }
   
   def delete(id: String) = Action {
     val query = MongoDBObject("_id" -> new ObjectId(id))

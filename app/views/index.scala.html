@@ -3,7 +3,49 @@
 <html lang="en">
 @views.html.head()
     <div class="container">
-        <h1> WELCOME! </h1>
-        @user.username
+        <div style="padding-top: 20px;">
+            <h1>Computer Theorem Proving <small>CCS CS 10</small></h1>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="span8">
+                <div id="welcome">
+                    This is the main course page for CCS 10 Computer Theorem Proving being offered Spring 2012. You can find the latest course updates below, as well as a listing of posts <a href="/posts">here</a>. This course is divided into two pieces the first three weeks covering Functional Programming in Haskell, and the rest focused on theorem proving in Coq. All relevant reference material and contact information will be listed below. 
+                </div>
+            </div>
+            <div class="span4">
+                <div id="links" class="well">
+                    <h3>Important Links</h3>
+                    <div id="link">
+                        <a href="http://www.learnyouahaskell.com">
+                            Learn You a Haskell for Great Good
+                        </a>
+                    </div>
+                    <div id="link">
+                        <a href="http://hackage.haskell.org/platform/">
+                            Haskell Platform
+                        </a>
+                    </div>
+                    <div id="link">
+                        <a href="http://www.cis.upenn.edu/~bcpierce/sf/">
+                            Computer Software Foundations
+                        </a>
+                    </div>
+                    <div id="link">
+                        <a>
+                            Syllabus
+                        </a>
+                    </div>
+                </div>
+                <div id="contacts" class="well">
+                    <h3>Contact Information</h3>
+                    <div>Jared: jroesch at umail.ucsb.edu</div>
+                    <div>Berkeley: berkeley at berkeleychurchill.com</div>
+                </div>
+            </div>
+        </div>
+        <div id="last_post">
+            Last Post Here
+        </div>
     </div>
 </html>
