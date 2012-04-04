@@ -23,6 +23,13 @@ object Post {
     else
       tupleTwo
   }
+  
+  def newerPost(postOne: Post, postTwo: Post) = {
+    if (postOne._id.getTime > postTwo._id.getTime)
+      true
+    else 
+      false
+  }
 }
 
 object PostDAO extends SalatDAO[Post, ObjectId](collection=Database("posts")) 

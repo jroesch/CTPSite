@@ -29,7 +29,8 @@ object Posts extends Controller {
     val results = PostDAO.find(query).toList
     val start = page.toInt * postNumber
     val end = start + postNumber
-    val posts = results.slice(start, end)
+    //val posts = results.slice(start, end)
+    val posts = results.sortWith(Post.newerPost(_,_))
     val numberOfPages = page.toInt / postNumber
     Ok(views.html.postsPage(user, posts, 0 to numberOfPages))
   }
