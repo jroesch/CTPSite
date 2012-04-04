@@ -1,6 +1,7 @@
 package models
 
 import models._
+import play.api.mvc._
 import com.novus.salat._
 import com.novus.salat.dao._
 import com.mongodb.casbah.Imports._
@@ -15,6 +16,8 @@ case class User(
          admin: Boolean = false) 
          
 object User {
+  private val guest = User(username = "Guest", password = "", salt = "")
+  
   def hashPassword(pw: String, salt: String) = sha(pw + salt)
   
   def salt = randomString(20)
@@ -34,6 +37,19 @@ object User {
     (1 to length).map(x => (scala.math.random * 127).toInt.toChar.toString)
                  .fold("")(_ + _)
   } 
+  
+  def getLoggedInUser(session: Session) = {
+    session.get("userid") match {
+      case Some(uid) => {
+        val userQuery = MongoDBObject("_id" -> new ObjectId(uid))
+        UserDAO.findOne(userQuery) match {
+          case Some(user) => user
+          case _ => guest
+        }
+      }
+      case _ => guest
+    }
+  }
 } 
 
 object UserDAO extends SalatDAO[User, ObjectId](collection=Database("users"))

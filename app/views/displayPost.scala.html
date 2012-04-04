@@ -1,8 +1,8 @@
-@(post: Post)
+@(user: User, post: Post)
 <!DOCTYPE html>
 <html>
     @views.html.head()
     <body>
-        @views.html.post(post)
+        @views.html.post(user, post)
     </body>
 </html>

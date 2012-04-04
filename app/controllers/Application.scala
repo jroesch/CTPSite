@@ -10,16 +10,10 @@ import com.mongodb.casbah.Imports._
 object Application extends Controller {
   private val guest = User(username = "Guest", password = "", salt = "")
   
-  def index = Action { request =>
-    val uid = request.session.get("userid")
-    uid match {
-      case None => Ok(views.html.index(guest))
-      case Some(id) => {
-        val query = MongoDBObject("_id" -> new ObjectId(id))
-        val user = UserDAO.findOne(query)
-        Ok(views.html.index(user.get))
-      }
-    }
+  def index = Action { implicit request =>
+    val user = User.getLoggedInUser(session)
+    val lastPost = Post.getLatestPost
+    Ok(views.html.index(user))
   }
   
   def newPost = Action { request =>
@@ -27,7 +21,7 @@ object Application extends Controller {
     val query = MongoDBObject("_id" -> new ObjectId(uid))
     val user = UserDAO.findOne(query)
     if (user.get.admin)
-      Ok(views.html.createPost())
+      Ok(views.html.createPost(user.get))
     else 
       Redirect("/") //redirect here
   }

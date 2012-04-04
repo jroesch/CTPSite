@@ -1,8 +1,13 @@
-@(post: Post)
+@(user: User, post: Post)
 <div class="post">
     <div class="post-header">
         <div class="post-title">
             <h3>@post.title</h3>
+            @if(user.admin) {
+                <div class="options" style="float: right;">
+                    <a onclick="deletePost('@post._id')">delete</a>
+                </div>
+            }
         </div>
         <div class="post-author">
             <small>by @post.author</small>

@@ -1,4 +1,4 @@
-@(posts: List[Post], pageRange: Range)
+@(user: User, posts: List[Post], pageRange: Range)
 <!DOCTYPE html>
 <html>
 @views.html.head()
@@ -9,7 +9,7 @@
             <hr/>
             <div class="posts">
                 @posts.map { post =>
-                    @views.html.post(post)
+                    @views.html.post(user, post)
                 }
             </div>
             <div class="pagination">
