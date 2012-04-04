@@ -12,6 +12,12 @@
                 <div id="welcome">
                     This is the main course page for CCS 10 Computer Theorem Proving being offered Spring 2012. You can find the latest course updates below, as well as a listing of posts <a href="/posts">here</a>. This course is divided into two pieces the first three weeks covering Functional Programming in Haskell, and the rest focused on theorem proving in Coq. All relevant reference material and contact information will be listed below. 
                 </div>
+                <div style="padding-top: 10px;">
+                    <h3>Latest Post</h3>
+                </div>
+                <div id="last_post">
+                    @post(user, Post.getLatestPost)
+                </div>
             </div>
             <div class="span4">
                 <div id="links" class="well">
@@ -44,10 +50,6 @@
                     <div>Allen: adelbertc at gmail.com</div>
                 </div>
             </div>
-        </div>
-        <div><h3>Latest Post</h3></div>
-        <div id="last_post">
-            @post(user, Post.getLatestPost)
         </div>
         <div id="footer">
             <hr />
