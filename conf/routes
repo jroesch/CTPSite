@@ -19,6 +19,8 @@ GET     /logout                     controllers.Application.logout
 #Post Management Routes
 GET     /posts/new                  controllers.Application.newPost
 
+GET     /posts/edit/:id             controllers.Application.editPost(id: String)
+
 GET     /posts/page/:page           controllers.Posts.list(page)
 
 GET     /posts                      controllers.Posts.newest

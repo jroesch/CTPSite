@@ -9,8 +9,9 @@ import com.mongodb.casbah.Imports._
 case class Post(_id: ObjectId = new ObjectId, author: String, title: String, content: String) 
 
 object Post {
-  def getLatestPost = {
+  def getLatestPost: Post = {
     val all = PostDAO.find(MongoDBObject()).toList
+    if (all.isEmpty) return Post(author="", title="No Posts To Show", content="")
     val postsAndTimes = all.zip(all.map(_._id.getTime))
     val max = postsAndTimes.tail.fold(postsAndTimes.head)(maxTuple(_,_))
     max._1

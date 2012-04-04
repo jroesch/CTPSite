@@ -16,14 +16,30 @@ object Application extends Controller {
     Ok(views.html.index(user))
   }
   
+  def editPost(id: String) = Action { request =>
+    val user = User.getLoggedInUser(request.session)
+    PostDAO.findOne(MongoDBObject("_id" -> new ObjectId(id))) match {
+      case Some(post) => {
+        if (user.admin)
+          Ok(views.html.editPost(user, post))
+        else 
+          Redirect("/login") //redirect here
+      }
+      case None => {
+        if (user.admin)
+          Ok("Post not found.")
+        else 
+          Redirect("/login") //redirect here
+      }
+    }
+  }
+  
   def newPost = Action { request =>
-    val uid = request.session.get("userid").get
-    val query = MongoDBObject("_id" -> new ObjectId(uid))
-    val user = UserDAO.findOne(query)
-    if (user.get.admin)
-      Ok(views.html.createPost(user.get))
+    val user = User.getLoggedInUser(request.session)
+    if (user.admin)
+      Ok(views.html.createPost(user))
     else 
-      Redirect("/") //redirect here
+      Redirect("/login") //redirect here
   }
   
   def login = Action { implicit request =>

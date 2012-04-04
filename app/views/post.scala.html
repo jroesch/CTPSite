@@ -5,7 +5,8 @@
             <h3>@post.title</h3>
             @if(user.admin) {
                 <div class="options" style="float: right;">
-                    <a onclick="deletePost('@post._id')">delete</a>
+                    <a onclick="deletePost('@post._id')">delete</a> | 
+                    <a href="/posts/edit/@post._id">edit</a>
                 </div>
             }
         </div>
