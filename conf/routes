@@ -30,7 +30,7 @@ GET     /posts/:id                  controllers.Posts.read(id)
 
 POST    /posts                      controllers.Posts.create
 
-PUT     /posts/:id                  controllers.Posts.update(id)
+POST    /posts/update/:id                  controllers.Posts.update(id)
 
 DELETE  /posts/:id                  controllers.Posts.delete(id)
 
